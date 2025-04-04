@@ -41,12 +41,23 @@ python -c "import nltk; nltk.download(['punkt', 'stopwords', 'wordnet', 'average
 python -m spacy download en_core_web_sm
 ```
 
+## Command Line Arguments
+
+| Argument | Type |	Default	| Description |
+|----------|---------|-------------|-------------|
+| --url |	string |	"https://www.thrive.pitt.edu" |	Base URL to start crawling| 
+| --output |	string |	"qa_output" |	Directory to store output files| 
+| --max-pages	|	int	|	30	|	Maximum number of pages to crawl| 
+| --max-pairs	|	int	|	10	|	Maximum QA pairs to generate per page| 
+| --no-gpu	|	flag	|	False	|	Disable GPU usage if set| 
+| --checkpoint	|	string	|	"checkpoints"	|	Directory for storing checkpoint files| 
+| --force	|	flag	|	False	|	Force regeneration, ignoring existing checkpoints| 
+
 ## Usage
 
 ```bash
 python qa_generator.py --url "https://www.example.edu" --output "qa_output" --max-pages 30 --max-pairs 10
 ```
-
 
 ## Output Structure
 
@@ -87,3 +98,18 @@ python qa_generator.py --url "https://www.financialaid.university.edu" --output 
 # Forcing regeneration despite existing checkpoints
 python qa_generator.py --url "https://www.housing.university.edu" --output "housing_qa" --force
 ```
+
+## System Pipeline
+
+The system follows this workflow:
+
+- **Resource Setup**: Initializes NLP tools (NLTK, spaCy, Hugging Face models)
+- **Web Crawling**: Performs domain-optimized crawling with bot detection avoidance
+- **Document Processing**: Applies Named Entity Recognition (NER), topic extraction, and semantic chunking
+- **Knowledge Base Construction**: Indexes processed chunks for efficient retrieval
+- **Question Generation**: Uses neural models with rule-based fallbacks to create questions
+- **Answer Generation**: Employs RAG with cross-encoder reranking and fact-checking
+- **Quality Control**: Applies multi-dimensional scoring and filtering to ensure high-quality QA pairs
+- **Output Generation**: Saves results in JSON, CSV, and Markdown formats
+
+This pipeline ensures an end-to-end process from data collection to polished QA pair generation.
