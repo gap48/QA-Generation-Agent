@@ -1,5 +1,7 @@
 # End-to-End Automated QA Generation Agent
 
+An end-to-end automated high-quality question-answer pair generation system that creates training data for chatbots by sophisticated webcrawling, advanced RAG with cross-encoder reranking, multi-dimensional scoring and applying state-of-the-art NLP techniques.
+
 ## Abstract
 
 - **System Overview**: Designed and implemented an end-to-end automated QA generation system for training and deploying a chatbot for students, faculty, and staff across campus, significantly enhancing information accessibility throughout the university ecosystem.
@@ -52,14 +54,14 @@ The system produces output files in the specified output directory (--output), i
 
 - qa_pairs_final.json: JSON file containing all QA pairs with metadata
 - qa_pairs_final.csv: CSV file with columns:
--- Question
--- Answer
--- Source URL
--- Topic
--- Topic Type
--- Overall Score
+  - Question
+  - Answer
+  - Source URL
+  - Topic
+  - Topic Type
+  - Overall Score
 - qa_pairs_final.md: Markdown file grouping QA pairs by source URL with a hierarchical structure
-- 
+  
 Checkpoint files are stored in the checkpoint directory (--checkpoint):
 
 - progress_{hash}.json: Tracks overall progress
