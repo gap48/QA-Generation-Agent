@@ -1,7 +1,5 @@
 # End-to-End Automated QA Generation Agent
 
-An end-to-end automated question-answer pair generation system that creates high-quality content for chatbots by crawling websites and applying state-of-the-art NLP techniques.
-
 ## Abstract
 
 - **System Overview**: Designed and implemented an end-to-end automated QA generation system for training and deploying a chatbot for students, faculty, and staff across campus, significantly enhancing information accessibility throughout the university ecosystem.
